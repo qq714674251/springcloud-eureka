@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springcloud.dao.DeptDao">
+    <select id="findAll" resultType="com.atguigu.springcloud.entity.Dept">
+        select * from dept
+    </select>
+
+    <select id="getOne" parameterType="java.lang.Long" resultType="com.atguigu.springcloud.entity.Dept">
+        select * from dept where deptno = #{deptno}
+    </select>
+
+    <insert id="save" parameterType="com.atguigu.springcloud.entity.Dept">
+        insert into dept(dname, db_source) values(#{dname}, database())
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from dept where deptno = #{deptno}
+    </delete>
+
+    <update id="update" parameterType="com.atguigu.springcloud.entity.Dept">
+        update dept set dname = #{dname} where deptno = #{deptno}
+    </update>
+</mapper>
